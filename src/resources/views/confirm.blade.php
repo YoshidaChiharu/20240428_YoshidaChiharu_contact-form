@@ -15,47 +15,56 @@
             <table class="confirm-table">
                 <tr>
                     <th>お名前</th>
-                    <td>山田  太郎</td>
+                    <td>{{ $contact['last_name'] }}  {{ $contact['first_name'] }}</td>
                 </tr>
                 <tr>
                     <th>性別</th>
-                    <td>男性</td>
+                    @switch($contact['gender'])
+                        @case (1)
+                            <td>男性</td>
+                            @break
+                        @case (2)
+                            <td>女性</td>
+                            @break
+                        @case (3)
+                            <td>その他</td>
+                    @endswitch
                 </tr>
                 <tr>
                     <th>メールアドレス</th>
-                    <td>test@example.com</td>
+                    <td>{{ $contact['email'] }}</td>
                 </tr>
                 <tr>
                     <th>電話番号</th>
-                    <td>08012345678</td>
+                    <td>{{ $contact['tell'] }}</td>
                 </tr>
                 <tr>
                     <th>住所</th>
-                    <td>東京都渋谷区千駄ヶ谷1-2-3</td>
+                    <td>{{ $contact['address'] }}</td>
                 </tr>
                 <tr>
                     <th>建物名</th>
-                    <td>千駄ヶ谷マンション101</td>
+                    <td>{{ $contact['building'] }}</td>
                 </tr>
                 <tr>
                     <th>お問い合わせの種類</th>
-                    <td>category1</td>
+                    <td>{{ $contact['category_content'] }}</td>
                 </tr>
                 <tr>
                     <th>お問い合わせ内容</th>
-                    <td>サンプルテキスト</td>
+                    <td>{{ $contact['detail'] }}</td>
                 </tr>
             </table>
-            <!-- 値送信用の隠しパラメータ -->
-            <input type="hidden" name="first_name" value="">
-            <input type="hidden" name="last_name" value="">
-            <input type="hidden" name="gender" value="">
-            <input type="hidden" name="email" value="">
-            <input type="hidden" name="tell" value="">
-            <input type="hidden" name="address" value="">
-            <input type="hidden" name="building" value="">
-            <input type="hidden" name="category_id" value="">
-            <input type="hidden" name="detail" value="">            
+            <!-- レコード登録用パラメータ -->
+            <input type="hidden" name="first_name" value="{{ $contact['first_name'] }}">
+            <input type="hidden" name="last_name" value="{{ $contact['last_name'] }}">
+            <input type="hidden" name="gender" value="{{ $contact['gender'] }}">
+            <input type="hidden" name="email" value="{{ $contact['email'] }}">
+            <input type="hidden" name="tell" value="{{ $contact['tell'] }}">
+            <input type="hidden" name="address" value="{{ $contact['address'] }}">
+            <input type="hidden" name="building" value="{{ $contact['building'] }}">
+            <input type="hidden" name="category_id" value="{{ $contact['category_id'] }}">
+            <input type="hidden" name="detail" value="{{ $contact['detail'] }}">
             <div class="form__button">
                 <button class="form__button-submit" type="submit">送信</button>
             </div>
@@ -64,16 +73,18 @@
         <!-- 修正用フォーム -->
         <form action="/" class="modify-form" method="post">
             @csrf
-            <!-- 値送信用の隠しパラメータ -->
-            <input type="hidden" name="first_name" value="">
-            <input type="hidden" name="last_name" value="">
-            <input type="hidden" name="gender" value="">
-            <input type="hidden" name="email" value="">
-            <input type="hidden" name="tell" value="">
-            <input type="hidden" name="address" value="">
-            <input type="hidden" name="building" value="">
-            <input type="hidden" name="category_id" value="">
-            <input type="hidden" name="detail" value="">
+            <!-- トップページへの戻りで渡すパラメータ -->
+            <input type="hidden" name="first_name" value="{{ $contact['first_name'] }}">
+            <input type="hidden" name="last_name" value="{{ $contact['last_name'] }}">
+            <input type="hidden" name="gender" value="{{ $contact['gender'] }}">
+            <input type="hidden" name="email" value="{{ $contact['email'] }}">
+            <input type="hidden" name="tell_first" value="{{ $contact['tell_first'] }}">
+            <input type="hidden" name="tell_second" value="{{ $contact['tell_second'] }}">
+            <input type="hidden" name="tell_third" value="{{ $contact['tell_third'] }}">
+            <input type="hidden" name="address" value="{{ $contact['address'] }}">
+            <input type="hidden" name="building" value="{{ $contact['building'] }}">
+            <input type="hidden" name="category_id" value="{{ $contact['category_id'] }}">
+            <input type="hidden" name="detail" value="{{ $contact['detail'] }}">
             <button class="form__button-modify" type="submit">修正</button>
         </form>
 

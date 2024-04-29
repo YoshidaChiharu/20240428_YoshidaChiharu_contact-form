@@ -34,7 +34,7 @@
     width: 65%;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .form__input--text {
@@ -88,4 +88,10 @@
     border: none;
     font-size: 18px;
     cursor: pointer;
+}
+
+.form__error {
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
 }
