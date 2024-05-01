@@ -74,6 +74,24 @@
 
 .input-category {
     width: 50%;
+    position: relative;
+}
+
+.input-category::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    border-right: 12px solid transparent;
+    border-left: 12px solid transparent;
+    border-top: 12px solid #beb1a6;
+    border-bottom: 0;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.input-category select {
+    appearance: none;
 }
 
 .form__button {

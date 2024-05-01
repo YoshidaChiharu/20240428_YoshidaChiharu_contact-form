@@ -1,0 +1,147 @@
+.header-button {
+    padding: 4px 20px;
+    color: #d9c6b5;
+    background-color: #f6f6f6;
+    border: solid 1px #d9c6b5;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 20px 15px;
+    max-width: 1000px;
+}
+
+.container__heading {
+    width: 100%;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 24px;
+    color: #82756a;
+}
+
+.container__content {
+    width: 100%;
+    padding: 20px 0;
+}
+
+.admin-search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search__text {
+    width: 30%;
+}
+
+.search__text input {
+    width: 100%;
+    padding: 8px 10px;
+    border: solid 1px #e3ded9;
+    color: #82756a;
+    background-color: #fbfbfb;
+}
+
+.search__select select,
+.search__select input {
+    padding: 8px 30px 8px 10px;
+    border: solid 1px #e3ded9;
+    color: #82756a;
+    background-color: #f4f4f4;
+}
+
+.search__select {
+    position: relative;
+}
+
+.search__select::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 8px;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    border-top: 12px solid #e3ded9;
+    border-bottom: 0;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.search__select select {
+    appearance: none;
+}
+
+.search__select input::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    background: transparent;
+}
+
+.admin-search__button--submit {
+    width: 80px;
+    padding: 8px 0;
+    color: white;
+    background-color: #82756a;
+    border: none;
+    cursor: pointer;
+}
+
+.admin-search__button--reset {
+    width: 80px;
+    padding: 8px 0;
+    color: white;
+    background-color: #d9c6b5;
+    border: none;
+    cursor: pointer;
+}
+
+.admin-export {
+    padding: 40px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-export__button button {
+    padding: 4px 20px;
+    color: #82756a;
+    background-color: #edeae6;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.admin-table {
+    width: 100%;
+}
+
+.admin-table tr {
+    border: solid 1px #e0dfde;
+}
+
+.admin-table th {
+    padding: 10px 40px;
+    text-align: left;
+    color: white;
+    background-color: #82756a;
+}
+
+.admin-table td {
+    padding: 15px 40px;
+    color: #82756a;
+}
+
+.admin-table__button {
+    padding: 4px 10px;
+    color: #d9c6b5;
+    background-color: #f6f6f6;
+    border: solid 1px #e3ded9;
+    cursor: pointer;
+}

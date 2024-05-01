@@ -127,7 +127,6 @@
                         <select name="category_id">
                             <option value="" disabled selected>選択してください</option>
                             @foreach($categories as $category)
-                                <!-- <option value="{{ $category->id }}" @if($category->id == $contact['category_id']) selected @endif > -->
                                 <option value="{{ $category->id }}" {{ old('category_id', $contact['category_id']) == $category->id ? 'selected' : '' }} >
                                     {{ $category->content }}
                                 </option>
