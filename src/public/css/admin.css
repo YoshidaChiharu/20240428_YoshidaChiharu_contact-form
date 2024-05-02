@@ -176,7 +176,10 @@
     color: #d9c6b5;
     background-color: #f6f6f6;
     border: solid 1px #e3ded9;
+    font-size: 14px;
+    text-decoration: none;
     cursor: pointer;
+    display: inline-block;
 }
 
 /* ページネーションのカスタマイズ */
@@ -208,4 +211,71 @@
 
 .admin-export__pagenation .active span {
     color: white;
+}
+
+/* モーダルウィンドウ表示 */
+.modal {
+    padding: 100px 80px 40px 80px;
+    background-color: white;
+    border: solid 1px #82756a;
+    box-shadow: 2px 2px 5px #82756a;
+    /* box-shadow: 3px 3px 5px rgba(226, 221, 217, 0.5); */
+    display: inline-block;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.modal:not(:target) {
+    display: none;
+}
+
+.modal:target {
+    display: inline-block;
+}
+
+.modal-table tr {
+    color: #82756a;
+}
+
+.modal-table th {
+    padding: 10px 0;
+    width: 35%;
+    text-align: left;
+}
+
+.modal-table td {
+    padding: 10px 0;
+    width: 65%;
+}
+
+.modal-form__button {
+    margin-top: 60px;
+    text-align: center;
+}
+
+.modal-form__button-submit {
+    padding: 4px 10px;
+    color: white;
+    background-color: #ba370d;
+    border: none;
+}
+
+.modal-close {
+    width: 30px;
+    height: 30px;
+    border: solid 1px #82756a;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 40px;
+    right: 40px;
+}
+
+.modal-close__button {
+    text-decoration: none;
+    color: #82756a;
 }

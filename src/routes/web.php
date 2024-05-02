@@ -23,11 +23,8 @@ Route::post('/confirm', [ContactController::class, 'confirm']);
 Route::post('/thanks', [ContactController::class, 'store']);
 
 // 管理画面への遷移前にログイン有無を確認
-// Route::middleware('auth')->group(function () {
-//     Route::get('/admin', [AdminController::class, 'admin']);
-// });
-
-Route::get('/admin', [AdminController::class, 'admin']);
+Route::middleware('auth')->group(function () {
+    Route::get('/admin', [AdminController::class, 'admin']);
+});
 Route::post('/register', [RegisteredUserController::class, 'store']);
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
-Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);

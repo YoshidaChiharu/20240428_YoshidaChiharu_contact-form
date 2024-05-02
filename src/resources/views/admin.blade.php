@@ -96,7 +96,7 @@
                     {{ $contact->category->content }}
                 </td>
                 <td class="column-button">
-                    <button class="admin-table__button">詳細</button>
+                    <a class="admin-table__button" href="#modal-{{ $contact->id }}">詳細</a>
                 </td>
             </tr>
             @endforeach
@@ -104,4 +104,66 @@
 
     </div>
 </div>
+
+@foreach($contacts as $contact)
+<div class="modal" id="modal-{{ $contact->id }}">
+    
+    <form action="" class="modal-form" method="">
+        @csrf
+        <table class="modal-table">
+            <tr>
+                <th>お名前</th>
+                <td>{{ $contact->last_name }}  {{ $contact->first_name }}</td>
+            </tr>
+            <tr>
+                <th>性別</th>
+                <td>
+                    @switch($contact->gender)
+                        @case (1)
+                            男性
+                            @break
+                        @case (2)
+                            女性
+                            @break
+                        @case (3)
+                            その他
+                    @endswitch
+                </td>
+            </tr>
+            <tr>
+                <th>メールアドレス</th>
+                <td>{{ $contact->email }}</td>
+            </tr>
+            <tr>
+                <th>電話番号</th>
+                <td>{{ $contact->tell }}</td>
+            </tr>
+            <tr>
+                <th>住所</th>
+                <td>{{ $contact->address }}</td>
+            </tr>
+            <tr>
+                <th>建物名</th>
+                <td>{{ $contact->building }}</td>
+            </tr>
+            <tr>
+                <th>お問い合わせの種類</th>
+                <td>{{ $contact->category->content }}</td>
+            </tr>
+            <tr>
+                <th>お問い合わせ内容</th>
+                <td>{{ $contact->detail }}</td>
+            </tr>
+        </table>
+        <div class="modal-form__button">
+            <button class="modal-form__button-submit" type="submit">削除</button>
+        </div>
+    </form>
+
+    <div class="modal-close">
+        <a href="#" class="modal-close__button">×</a>
+    </div>
+</div>
+@endforeach
+
 @endsection
