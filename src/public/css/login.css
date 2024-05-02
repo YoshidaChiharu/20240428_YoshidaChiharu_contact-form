@@ -72,3 +72,7 @@
     font-size: 18px;
     cursor: pointer;
 }
+
+.form__group-error {
+    color: red;
+}

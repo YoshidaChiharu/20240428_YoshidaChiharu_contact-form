@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\RegisteredUserController;
+use App\Http\Controllers\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +21,13 @@ Route::get('/', [ContactController::class, 'index']);
 Route::post('/', [ContactController::class, 'modify']);
 Route::post('/confirm', [ContactController::class, 'confirm']);
 Route::post('/thanks', [ContactController::class, 'store']);
+
+// 管理画面への遷移前にログイン有無を確認
+// Route::middleware('auth')->group(function () {
+//     Route::get('/admin', [AdminController::class, 'admin']);
+// });
+
 Route::get('/admin', [AdminController::class, 'admin']);
+Route::post('/register', [RegisteredUserController::class, 'store']);
+Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy']);

@@ -32,6 +32,13 @@
     align-items: center;
 }
 
+.search__form {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .search__text {
     width: 30%;
 }
@@ -44,19 +51,20 @@
     background-color: #fbfbfb;
 }
 
-.search__select select,
-.search__select input {
+.search__gender select,
+.search__category select,
+.search__date input {
     padding: 8px 30px 8px 10px;
     border: solid 1px #e3ded9;
     color: #82756a;
     background-color: #f4f4f4;
 }
 
-.search__select {
+.custom-icon {
     position: relative;
 }
 
-.search__select::after {
+.custom-icon::after {
     content: "";
     position: absolute;
     top: 50%;
@@ -69,11 +77,11 @@
     pointer-events: none;
 }
 
-.search__select select {
+.custom-icon select {
     appearance: none;
 }
 
-.search__select input::-webkit-calendar-picker-indicator {
+.custom-icon input::-webkit-calendar-picker-indicator {
     position: absolute;
     top: 0;
     left: 0;
@@ -103,7 +111,7 @@
 }
 
 .admin-export {
-    padding: 40px 0;
+    padding: 20px 0 10px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -122,19 +130,44 @@
     width: 100%;
 }
 
+.column-name {
+    width: 20%;
+    padding-left: 30px;
+}
+
+.column-gender {
+    width: 10%;
+}
+
+.column-mail {
+    width: 30%;
+}
+
+.column-category {
+    width: 25%;
+}
+
+.column-button {
+    width: 15%;
+    padding-right: 30px;
+    text-align: right;
+}
+
 .admin-table tr {
     border: solid 1px #e0dfde;
 }
 
 .admin-table th {
-    padding: 10px 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     text-align: left;
     color: white;
     background-color: #82756a;
 }
 
 .admin-table td {
-    padding: 15px 40px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     color: #82756a;
 }
 
@@ -144,4 +177,35 @@
     background-color: #f6f6f6;
     border: solid 1px #e3ded9;
     cursor: pointer;
+}
+
+/* ページネーションのカスタマイズ */
+.admin-export__pagenation ul {
+    border: solid 1px #e0dfde;
+    border-radius: 5px;
+    display: flex;
+}
+
+.admin-export__pagenation li {
+    padding: 5px 10px;
+    /* font-size: 14px; */
+}
+
+.admin-export__pagenation a,
+.admin-export__pagenation span {
+    text-decoration: none;
+    font-size: 14px;
+    color: #82756a;
+}
+
+.admin-export__pagenation li:not(:last-child) {
+    border-right: solid 1px #e0dfde;
+}
+
+.admin-export__pagenation .active {
+    background-color: #82756a;
+}
+
+.admin-export__pagenation .active span {
+    color: white;
 }
