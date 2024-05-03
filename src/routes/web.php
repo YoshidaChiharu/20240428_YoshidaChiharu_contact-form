@@ -17,14 +17,20 @@ use App\Http\Controllers\AuthenticatedSessionController;
 |
 */
 
+// お問い合わせフォーム
 Route::get('/', [ContactController::class, 'index']);
 Route::post('/', [ContactController::class, 'modify']);
 Route::post('/confirm', [ContactController::class, 'confirm']);
 Route::post('/thanks', [ContactController::class, 'store']);
 
-// 管理画面への遷移前にログイン有無を確認
-Route::middleware('auth')->group(function () {
-    Route::get('/admin', [AdminController::class, 'admin']);
-});
+// 認証関連
 Route::post('/register', [RegisteredUserController::class, 'store']);
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+
+// 管理画面
+Route::middleware('auth')->group(function () {
+    Route::get('/admin', [AdminController::class, 'admin']);
+    Route::get('/admin/search', [AdminController::class, 'search']);
+    Route::post('/admin/delete', [AdminController::class, 'destroy']);
+});
+

@@ -20,18 +20,19 @@
             <form class="search__form" action="/admin/search" method="get">
                 @csrf
                 <div class="search__text">
-                    <input type="text" placeholder="名前やメールアドレスを入力してください">
+                    <input type="text" name="text" placeholder="名前やメールアドレスを入力してください">
                 </div>
                 <div class="search__gender custom-icon">
-                    <select name="" id="">
-                        <option value="">性別</option>
+                    <select name="gender">
+                        <option value="" disabled selected>性別</option>
+                        <option value="">全て</option>
                         <option value="1">男性</option>
                         <option value="2">女性</option>
                         <option value="3">その他</option>
                     </select>
                 </div>
                 <div class="search__category  custom-icon">
-                    <select name="" id="">
+                    <select name="category_id">
                         <option value="">お問い合わせの種類</option>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}">
@@ -41,7 +42,7 @@
                     </select>
                 </div>
                 <div class="search__date  custom-icon">
-                    <input type="date">
+                    <input type="date" name="date">
                 </div>
                 <div class="search__button">
                     <button class="admin-search__button--submit">検索</button>
@@ -108,7 +109,7 @@
 @foreach($contacts as $contact)
 <div class="modal" id="modal-{{ $contact->id }}">
     
-    <form action="" class="modal-form" method="">
+    <form class="modal-form" action="/admin/delete" method="post">
         @csrf
         <table class="modal-table">
             <tr>
@@ -155,6 +156,7 @@
                 <td>{{ $contact->detail }}</td>
             </tr>
         </table>
+        <input type="hidden" name="id" value="{{ $contact->id }}">
         <div class="modal-form__button">
             <button class="modal-form__button-submit" type="submit">削除</button>
         </div>
