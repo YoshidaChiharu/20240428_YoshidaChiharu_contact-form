@@ -12,9 +12,9 @@
     <div class="container">
         <div class="container__content">
             <p class="thanks__message">お問い合わせありがとうございました</p>
-            <form action="/" class="thanks__button" method="get">
-                <button class="thanks__button-submit" type="submit">HOME</button>
-            </form>
+            <div class="thanks__button">
+                <button class="thanks__button-submit" onclick="location.href='/'">HOME</button>
+            </div>
         </div>
         <div class="container__background">
             <p>Thank you</p>

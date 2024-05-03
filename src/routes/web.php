@@ -22,6 +22,7 @@ Route::get('/', [ContactController::class, 'index']);
 Route::post('/', [ContactController::class, 'modify']);
 Route::post('/confirm', [ContactController::class, 'confirm']);
 Route::post('/thanks', [ContactController::class, 'store']);
+Route::get('/thanks', [ContactController::class, 'thanks']);
 
 // 認証関連
 Route::post('/register', [RegisteredUserController::class, 'store']);
@@ -32,5 +33,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin', [AdminController::class, 'admin']);
     Route::get('/admin/search', [AdminController::class, 'search']);
     Route::post('/admin/delete', [AdminController::class, 'destroy']);
+    Route::get('/admin/export', [AdminController::class, 'export']);
 });
 

@@ -117,7 +117,7 @@
     align-items: center;
 }
 
-.admin-export__button button {
+.admin-export__button-submit {
     padding: 4px 20px;
     color: #82756a;
     background-color: #edeae6;
@@ -183,33 +183,33 @@
 }
 
 /* ページネーションのカスタマイズ */
-.admin-export__pagenation ul {
+.admin-export__pagination ul {
     border: solid 1px #e0dfde;
     border-radius: 5px;
     display: flex;
 }
 
-.admin-export__pagenation li {
+.admin-export__pagination li {
     padding: 5px 10px;
     /* font-size: 14px; */
 }
 
-.admin-export__pagenation a,
-.admin-export__pagenation span {
+.admin-export__pagination a,
+.admin-export__pagination span {
     text-decoration: none;
     font-size: 14px;
     color: #82756a;
 }
 
-.admin-export__pagenation li:not(:last-child) {
+.admin-export__pagination li:not(:last-child) {
     border-right: solid 1px #e0dfde;
 }
 
-.admin-export__pagenation .active {
+.admin-export__pagination .active {
     background-color: #82756a;
 }
 
-.admin-export__pagenation .active span {
+.admin-export__pagination .active span {
     color: white;
 }
 
@@ -240,13 +240,13 @@
 }
 
 .modal-table th {
-    padding: 10px 0;
+    padding: 10px;
     width: 35%;
     text-align: left;
 }
 
 .modal-table td {
-    padding: 10px 0;
+    padding: 10px;
     width: 65%;
 }
 

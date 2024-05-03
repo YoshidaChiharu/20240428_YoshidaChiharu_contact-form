@@ -20,29 +20,37 @@
             <form class="search__form" action="/admin/search" method="get">
                 @csrf
                 <div class="search__text">
-                    <input type="text" name="text" placeholder="名前やメールアドレスを入力してください">
+                    <input type="text" name="text" placeholder="名前やメールアドレスを入力してください" value="{{ request()->text ?? '' }}">
                 </div>
                 <div class="search__gender custom-icon">
                     <select name="gender">
-                        <option value="" disabled selected>性別</option>
-                        <option value="">全て</option>
-                        <option value="1">男性</option>
-                        <option value="2">女性</option>
-                        <option value="3">その他</option>
+                        <option value="" selected>性別</option>
+                        <option value="" {{ request()->gender == null ? 'selected' : '' }} >
+                            全て
+                        </option>
+                        <option value="1" {{ request()->gender == 1 ? 'selected' : '' }} >
+                            男性
+                        </option>
+                        <option value="2" {{ request()->gender == 2 ? 'selected' : '' }} >
+                            女性
+                        </option>
+                        <option value="3" {{ request()->gender == 3 ? 'selected' : '' }} >
+                            その他
+                        </option>
                     </select>
                 </div>
                 <div class="search__category  custom-icon">
                     <select name="category_id">
                         <option value="">お問い合わせの種類</option>
                         @foreach($categories as $category)
-                            <option value="{{ $category->id }}">
+                            <option value="{{ $category->id }}" {{ request()->category_id == $category->id ? 'selected' : '' }} >
                                 {{ $category->content }}
                             </option>
                         @endforeach
                     </select>
                 </div>
                 <div class="search__date  custom-icon">
-                    <input type="date" name="date">
+                    <input type="date" name="date" value="{{ request()->date ?? '' }}">
                 </div>
                 <div class="search__button">
                     <button class="admin-search__button--submit">検索</button>
@@ -55,13 +63,15 @@
 
         <!-- エクスポートボタン＆ページネーション -->
         <div class="admin-export">
-            <div class="admin-export__button">
-                <button>エクスポート</button>
+            <form class="admin-export__button" action="/admin/export" method="get">
+                @foreach($contacts_id as $contact_id)
+                <input type="hidden" name="contacts_id[]" value="{{ $contact_id }}">
+                @endforeach
+                <button class="admin-export__button-submit">エクスポート</button>
+            </form>
+            <div class="admin-export__pagination">
+                {{ $contacts->appends(request()->query())->links('vendor.pagination.default') }}
             </div>
-            <div class="admin-export__pagenation">
-                {{ $contacts->links('vendor.pagination.default') }}
-            </div>
-            <!-- <div class="admin-export__pagenation">< 1 2 3 4 5 ></div> -->
         </div>
 
         <!-- 問い合わせ内容一覧 -->
@@ -106,6 +116,7 @@
     </div>
 </div>
 
+<!-- モーダルウィンドウ -->
 @foreach($contacts as $contact)
 <div class="modal" id="modal-{{ $contact->id }}">
     

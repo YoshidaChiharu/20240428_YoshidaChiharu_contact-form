@@ -107,6 +107,11 @@ class ContactController extends Controller
         Contact::create($contact);
         
         // サンクス画面へ遷移
+        return redirect('/thanks');
+    }
+
+    public function thanks()
+    {
         return view('thanks');
     }
 }
