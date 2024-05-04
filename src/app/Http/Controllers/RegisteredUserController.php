@@ -1,5 +1,11 @@
 <?php
 
+// Fortifyの認証処理に自作のリクエストフォームを反映するためコントローラーをコピー
+// コピー元：
+//   vendor/laravel/fortify/src/Http/Controllers/RegisterdUserController.php
+// 該当リクエストフォーム：
+//   App\Http\Requests\RegisterRequest
+
 namespace App\Http\Controllers;
 
 use Illuminate\Auth\Events\Registered;

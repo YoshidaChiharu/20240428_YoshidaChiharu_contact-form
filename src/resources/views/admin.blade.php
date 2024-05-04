@@ -25,9 +25,7 @@
                 <div class="search__gender custom-icon">
                     <select name="gender">
                         <option value="" selected>性別</option>
-                        <option value="" {{ request()->gender == null ? 'selected' : '' }} >
-                            全て
-                        </option>
+                        <option value="" >全て</option>
                         <option value="1" {{ request()->gender == 1 ? 'selected' : '' }} >
                             男性
                         </option>
@@ -63,15 +61,18 @@
 
         <!-- エクスポートボタン＆ページネーション -->
         <div class="admin-export">
+            @if( !($contacts->isEmpty()) )
             <form class="admin-export__button" action="/admin/export" method="get">
-                @foreach($contacts_id as $contact_id)
-                <input type="hidden" name="contacts_id[]" value="{{ $contact_id }}">
-                @endforeach
+                <input type="hidden" name="text" value="{{ request()->text ?? '' }}">
+                <input type="hidden" name="gender" value="{{ request()->gender ?? '' }}">
+                <input type="hidden" name="category_id" value="{{ request()->category_id ?? '' }}">
+                <input type="hidden" name="date" value="{{ request()->date ?? '' }}">
                 <button class="admin-export__button-submit">エクスポート</button>
             </form>
             <div class="admin-export__pagination">
                 {{ $contacts->appends(request()->query())->links('vendor.pagination.default') }}
             </div>
+            @endif
         </div>
 
         <!-- 問い合わせ内容一覧 -->

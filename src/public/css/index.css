@@ -51,12 +51,26 @@
     border: none;
 }
 
+.form__input--radio {
+    display: flex;
+    align-items: center;
+}
+
 .form__input--radio input {
-    accent-color: #82756a
+    appearance: none;
+    margin-right: 5px;
+    width: 16px;
+    height: 16px;
+    border: solid 1px #82756a;
+    border-radius: 50%;
+}
+
+.form__input--radio input:checked {
+    background-color: #82756a;
 }
 
 .form__input--radio label {
-    margin-right: 40px;
+    margin-right: 60px;
     color: #82756a;
 }
 

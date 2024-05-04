@@ -8,46 +8,30 @@ use App\Models\Category;
 
 class AdminController extends Controller
 {
+    // 管理画面表示用アクション
     public function admin()
     {
-        $query = Contact::with('category');
-        // csvエクスポート用のID配列作成
-        $contacts_all = $query->get();
-        $contacts_id[] = null;
-        foreach($contacts_all as $contact) {
-            $contacts_id[] = $contact->id;
-        }
-        // 問い合わせ内容取得（ページネーション表示用）
-        $contacts = $query->paginate(7);
-
-        // 問い合わせ種別を全取得
+        $contacts = Contact::with('category')->paginate(7);
         $categories = Category::all();
 
-        return view('admin', compact(['contacts_id', 'contacts', 'categories']));
+        return view('admin', compact(['contacts', 'categories']));
     }
 
+    // 検索アクション
     public function search(Request $request)
     {
-        $query = Contact::with('category')
+        $contacts = Contact::with('category')
                             ->KeywordSearch($request->text)
                             ->GenderSearch($request->gender)
                             ->CategorySearch($request->category_id)
-                            ->DateSearch($request->date);
-        // csvエクスポート用のID配列作成
-        $contacts_all = $query->get();
-        $contacts_id[] = null;
-        foreach($contacts_all as $contact) {
-            $contacts_id[] = $contact->id;
-        }
-        // 検索結果の取得（ページネーション表示用）
-        $contacts = $query->paginate(7);
-
-        // 問い合わせ種別を全取得
+                            ->DateSearch($request->date)
+                            ->paginate(7);
         $categories = Category::all();
 
-        return view('admin', compact(['contacts_id', 'contacts', 'categories']));
+        return view('admin', compact(['contacts', 'categories']));
     }
 
+    // 削除アクション
     public function destroy(Request $request)
     {
         Contact::find($request->id)->delete();
@@ -55,38 +39,35 @@ class AdminController extends Controller
         return redirect('/admin');
     }
 
+    // csvエクスポートアクション
     public function export(Request $request)
     {
-        $header = [
-            'id',
-            'category_id',
-            'first_name',
-            'last_name',
-            'gender',
-            'email',
-            'tell',
-            'address',
-            'building',
-            'detail',
-            'created_at',
-            'updated_at',
-        ];
-        $contacts = Contact::findMany($request->contacts_id);
+        $contacts = Contact::with('category')
+                            ->KeywordSearch($request->text)
+                            ->GenderSearch($request->gender)
+                            ->CategorySearch($request->category_id)
+                            ->DateSearch($request->date)
+                            ->get();
         $csv_data = $contacts->toArray();
-        // dd($contacts, $csv_data);
 
-        return response()->streamDownload(
-            function () use ($header, $csv_data) {
-                $handle = fopen('php://output', 'w');
-                fputcsv($handle, $header);
-                foreach($csv_data as $row) {
-                    unset($row['category']);
-                    fputcsv($handle, $row);
-                }
-                fclose($handle);
-            },
-            'contacts.csv'
-        );
+        if( !empty($csv_data) ) {
+            $csv_header = array_keys($csv_data[0]);
+
+            return response()->streamDownload(
+                function () use ($csv_header, $csv_data) {
+                    $handle = fopen('php://output', 'w');
+                    fputcsv($handle, $csv_header);
+                    foreach($csv_data as $row) {
+                        unset($row['category']);
+                        fputcsv($handle, $row);
+                    }
+                    fclose($handle);
+                },
+                'contacts.csv'
+            );
+        } else {
+            return redirect('/admin');
+        }
     }
 
 }

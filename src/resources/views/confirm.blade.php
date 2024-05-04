@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="container">
-    <div class="container__heading">confirm</div>
+    <div class="container__heading">Confirm</div>
     <div class="container__content">
 
         <!-- 送信用フォーム -->
@@ -15,20 +15,22 @@
             <table class="confirm-table">
                 <tr>
                     <th>お名前</th>
-                    <td>{{ $contact['last_name'] }}  {{ $contact['first_name'] }}</td>
+                    <td>{{ $contact['last_name'] }}&emsp;{{ $contact['first_name'] }}</td>
                 </tr>
                 <tr>
                     <th>性別</th>
+                    <td>
                     @switch($contact['gender'])
                         @case (1)
-                            <td>男性</td>
+                            男性
                             @break
                         @case (2)
-                            <td>女性</td>
+                            女性
                             @break
                         @case (3)
-                            <td>その他</td>
+                            その他
                     @endswitch
+                    </td>
                 </tr>
                 <tr>
                     <th>メールアドレス</th>
@@ -55,7 +57,7 @@
                     <td>{{ $contact['detail'] }}</td>
                 </tr>
             </table>
-            <!-- レコード登録用パラメータ -->
+            <!-- 登録用パラメータ -->
             <input type="hidden" name="first_name" value="{{ $contact['first_name'] }}">
             <input type="hidden" name="last_name" value="{{ $contact['last_name'] }}">
             <input type="hidden" name="gender" value="{{ $contact['gender'] }}">

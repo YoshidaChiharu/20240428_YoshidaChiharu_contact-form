@@ -26,6 +26,8 @@
     padding: 20px 0;
 }
 
+/* 検索欄 *************************************/
+
 .admin-search {
     display: flex;
     justify-content: space-between;
@@ -60,6 +62,25 @@
     background-color: #f4f4f4;
 }
 
+.admin-search__button--submit {
+    width: 80px;
+    padding: 8px 0;
+    color: white;
+    background-color: #82756a;
+    border: none;
+    cursor: pointer;
+}
+
+.admin-search__button--reset {
+    width: 80px;
+    padding: 8px 0;
+    color: white;
+    background-color: #d9c6b5;
+    border: none;
+    cursor: pointer;
+}
+
+/* セレクトボックスの▼アイコンのカスタマイズ */
 .custom-icon {
     position: relative;
 }
@@ -92,39 +113,56 @@
     background: transparent;
 }
 
-.admin-search__button--submit {
-    width: 80px;
-    padding: 8px 0;
-    color: white;
-    background-color: #82756a;
-    border: none;
-    cursor: pointer;
-}
-
-.admin-search__button--reset {
-    width: 80px;
-    padding: 8px 0;
-    color: white;
-    background-color: #d9c6b5;
-    border: none;
-    cursor: pointer;
-}
+/* エクスポートボタン＆ページネーション **********/
 
 .admin-export {
-    padding: 20px 0 10px 0;
+    padding: 40px 0 20px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .admin-export__button-submit {
-    padding: 4px 20px;
+    padding: 6px 20px;
     color: #82756a;
     background-color: #edeae6;
     border: none;
     font-size: 16px;
     cursor: pointer;
 }
+
+/* ページネーションのカスタマイズ */
+.admin-export__pagination ul {
+    margin: 0;
+    border: solid 1px #e0dfde;
+    border-radius: 5px;
+    display: flex;
+}
+
+.admin-export__pagination li {
+    padding: 5px 10px;
+}
+
+.admin-export__pagination a,
+.admin-export__pagination span {
+    text-decoration: none;
+    font-size: 14px;
+    color: #82756a;
+}
+
+.admin-export__pagination li:not(:last-child) {
+    border-right: solid 1px #e0dfde;
+}
+
+.admin-export__pagination .active {
+    background-color: #82756a;
+}
+
+.admin-export__pagination .active span {
+    color: white;
+}
+
+/* 問い合わせ内容一覧 **************************/
 
 .admin-table {
     width: 100%;
@@ -182,44 +220,12 @@
     display: inline-block;
 }
 
-/* ページネーションのカスタマイズ */
-.admin-export__pagination ul {
-    border: solid 1px #e0dfde;
-    border-radius: 5px;
-    display: flex;
-}
-
-.admin-export__pagination li {
-    padding: 5px 10px;
-    /* font-size: 14px; */
-}
-
-.admin-export__pagination a,
-.admin-export__pagination span {
-    text-decoration: none;
-    font-size: 14px;
-    color: #82756a;
-}
-
-.admin-export__pagination li:not(:last-child) {
-    border-right: solid 1px #e0dfde;
-}
-
-.admin-export__pagination .active {
-    background-color: #82756a;
-}
-
-.admin-export__pagination .active span {
-    color: white;
-}
-
-/* モーダルウィンドウ表示 */
+/* モーダルウィンドウ **************************/
 .modal {
     padding: 100px 80px 40px 80px;
     background-color: white;
     border: solid 1px #82756a;
     box-shadow: 2px 2px 5px #82756a;
-    /* box-shadow: 3px 3px 5px rgba(226, 221, 217, 0.5); */
     display: inline-block;
     position: fixed;
     top: 50%;

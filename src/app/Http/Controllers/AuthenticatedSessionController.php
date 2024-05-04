@@ -1,5 +1,11 @@
 <?php
 
+// Fortifyの認証処理に自作のリクエストフォームを反映するためコントローラーをコピー
+// コピー元：
+//   vendor/laravel/fortify/src/Http/Controllers/AuthenticatedSessionController.php
+// 該当リクエストフォーム：
+//   App\Http\Requests\AuthRequest
+
 namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Auth\StatefulGuard;
